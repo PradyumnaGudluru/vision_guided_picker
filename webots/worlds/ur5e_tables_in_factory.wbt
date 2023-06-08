@@ -1,0 +1,573 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+  info [
+    "Universal Robot UR3e, UR5e and UR10e grasping cans using Robotiq 3F grippers."
+  ]
+  title "Universal Robot"
+  basicTimeStep 8
+  physicsDisableAngularThreshold 0.1
+  contactProperties [
+    ContactProperties {
+      bounce 0.1
+    }
+    ContactProperties {
+      material1 "slope"
+      coulombFriction [
+        0.5
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.19388949268714198 0.06810396707075164 -0.978656586497403 2.492983591844654
+  position 3.14447549130465 4.014666909241503 4.911152758120214
+  exposure 1.7
+}
+TexturedBackground {
+  texture "factory"
+}
+Floor {
+  size 17 5
+  appearance ThreadMetalPlate {
+  }
+}
+Orange {
+  translation -3.88 -0.77 0.81
+  name "orange(5)"
+}
+UR5e {
+  translation 0 0 0.8
+  toolSlot [
+    Robotiq3fGripper {
+    }
+  ]
+}
+Clock {
+  translation -2.79 -2.29 1.54
+  rotation 0 0 1 1.5708
+}
+Table {
+  translation 0.59 -0.83 0
+  rotation 0 0 1 -1.5707953071795862
+  name "table(2)"
+}
+HoneyJar {
+  translation 1.332441663074084e-05 -0.6796874712805974 0.7394894006751102
+  rotation 0.9990342518264727 0.043923628757957967 -0.0011307140457064604 0.00029303406817289025
+}
+CerealBox {
+  translation 4.92464 -0.98804 0.7999019
+  rotation -1.2785658514435185e-17 9.495260639944914e-18 0.9999999999999999 2.618
+}
+Desk {
+  translation -3.98 -0.79 0
+  rotation 0 0 1 -1.5707953071795862
+}
+Carafe {
+  translation 4.729949812268434 -0.9699999791729982 0.7989634529908788
+  rotation 0.02047437562918719 -0.9997903776230626 -2.747597103823271e-05 0.0004138801122100566
+}
+BiscuitBox {
+  translation 4.39 -0.99 0.7999215200000003
+  rotation -3.66872182839638e-17 -4.880718428825544e-17 -1 0.5235953071795861
+}
+BiscuitBox {
+  translation 4.39 -0.99 0.8399019000000002
+  rotation 2.0309598349682493e-17 1.4490263156161064e-17 -1 0.785395307179586
+  name "biscuit box(1)"
+}
+Plate {
+  translation 5.2700396562038865 -0.680000560598886 0.7999931403590254
+  rotation 0.002245814720683541 -0.9999974326463181 -0.0003016902593563294 9.210812383270186e-05
+}
+Cabinet {
+  translation 3.34 -2.29 0
+  rotation 0 0 1 1.5708
+}
+Orange {
+  translation 3.47 -0.9 0.7999411400000003
+  rotation -1 0 0 5.545426455926239e-17
+  name "orange(3)"
+}
+Orange {
+  translation 5.42 -0.81 0.8499411400000002
+  rotation 0 1 0 0
+  name "orange(4)"
+}
+WaterBottle {
+  translation 4.050171293163124 -0.6099998434766418 0.7979786016856129
+  rotation 0.015918738813452807 -0.9998729929513113 0.0007692341491840294 0.0005872317592482684
+}
+Apple {
+  translation 4.6 -1.03 0.8499411400000002
+  rotation 0 1 0 0
+  name "apple(1)"
+}
+Apple {
+  translation 3.83772604767685 -1.00291285293719 0.8598357229440087
+  rotation 0.7994570565169066 -0.5554372907819749 0.22881833579087096 2.7367305474222676
+  name "apple(2)"
+}
+Apple {
+  translation 3.9372677534579164 -1.012475707447715 0.8598314556883364
+  rotation 0.6951826490365395 0.38454200855662457 -0.6073290114376031 -3.047221446650607
+  name "apple(4)"
+}
+Apple {
+  translation 3.9372182907236817 -0.9124697608269882 0.8598300003169482
+  rotation -0.8606509861457339 -0.40861519893407483 0.3038313664624542 1.4518032640520908
+  name "apple(3)"
+}
+Apple {
+  translation 3.837676011859826 -0.9029128669352303 0.8598342688566244
+  rotation 0.18403386097777902 -0.02435729345572658 0.9826180642900493 2.4268052930209136
+  name "apple(5)"
+}
+PlasticFruitBox {
+  translation 6.26 -0.79 0
+}
+LandscapePainting {
+  translation 7.34642e-08 -2.26 1.25
+  rotation 0 0 1 1.5708
+}
+Monitor {
+  translation 4.41247 -0.787065 0.79
+  rotation 0 0 1 1.8326
+  name "monitor(1)"
+}
+JetsonNano {
+  translation 3.15 1.86 0.8
+  rotation 0 0 1 0.523599
+}
+JamJar {
+  translation 5.0604906431497225 -0.6700129952051567 0.7994891896198334
+  rotation 0.018709989171274255 0.9998243738601955 -0.00107598340083073 0.0002914851104375241
+}
+BeerBottle {
+  translation 4.739896218927502 -0.8186699914692313 0.8004918749001857
+  rotation 0.45724409109386865 0.020225065047647654 0.8891112348314808 0.0007656735271009936
+}
+BunchOfSunFlowers {
+  translation 2.63 -2.14 0
+  rotation 0 0 -1 0
+}
+BunchOfSunFlowers {
+  translation 4.1 -2.14 0
+  name "bunch of sunflowers(1)"
+}
+Apple {
+  translation -398.09966724828655 -0.6599999999864882 0.049941140000000016
+  rotation 0.5187123190244504 0.8476346415340402 -0.11159321020445587 0.49711646157267536
+}
+SquareManhole {
+  translation 0.560459 -1.782 -0.03
+  rotation 0 0 1 -1.5707963071795863
+}
+Table {
+  translation 3.097723 2.013972 0
+  size 1.8 0.7 0.8
+  feetSize 0.05 0.05
+  trayAppearance PBRAppearance {
+    baseColor 0.926 0.912 0.698
+    roughness 0.8
+    metalness 0
+  }
+  legAppearance BrushedAluminium {
+    colorOverride 0.333 0.341 0.325
+  }
+}
+Orange {
+  translation 3.71 1.84 0.8499411400000002
+  rotation 0 -1 0 1.047195307179586
+}
+Orange {
+  translation 3.866266137695465 -0.666717242063597 0.8499411400000002
+  rotation -0.4038303292252473 -0.5372186467549673 0.7404844298002423 0.852785120029214
+  name "orange(1)"
+}
+Orange {
+  translation 4.87923 -0.606254 0.8499411400000002
+  rotation -0.1303359956030345 0.9899989666017716 0.05398679817872188 -2.363275307179585
+  name "orange(2)"
+}
+WoodenChair {
+  translation 2.921084 1.648051 0
+  rotation 0 0 1 2.0944
+}
+Transform {
+  translation 2.52024 2.10889 0.796
+  rotation 0 0 1 -1.3089953071795861
+  children [
+    Monitor {
+    }
+  ]
+}
+Keyboard {
+  translation 2.59421 1.8802 0.8
+  rotation 0 0 1 1.8326
+}
+Keyboard {
+  translation 4.36421 -0.5898 0.8
+  rotation 0 0 -0.9999999999999999 1.5707953071795862
+  name "keyboard(1)"
+}
+DesktopComputer {
+  translation 2.331033 2.125086 0
+  rotation 0 0 -1 1.5708
+}
+ComputerMouse {
+  translation 2.90217 1.90622 0.8
+  rotation 0 0 -1 -1.5707953071795862
+  mass 0
+}
+Screwdriver {
+  translation 1.3275554440999728 -0.6295247133705713 0.751939040518011
+  rotation -0.0005551394499192682 0.0009620008741100357 0.9999993831870645 1.0467738994609728
+}
+Table {
+  translation -1.419911 -0.81333 0
+  name "table(1)"
+  size 1.8 0.7 0.8
+  feetSize 0.05 0.05
+  trayAppearance PBRAppearance {
+    baseColor 0.926 0.912 0.698
+    roughness 0.8
+    metalness 0
+  }
+  legAppearance BrushedAluminium {
+    colorOverride 0.333 0.341 0.325
+  }
+}
+Table {
+  translation 4.66009 -0.81333 0
+  rotation 0 1 0 0
+  name "table(3)"
+  size 1.8 0.7 0.8
+  trayAppearance PBRAppearance {
+    baseColor 0.926 0.912 0.698
+    roughness 0.8
+    metalness 0
+  }
+  legAppearance BrushedAluminium {
+    colorOverride 0.333 0.341 0.325
+  }
+}
+OfficeTelephone {
+  translation -0.90743 -0.89624 0.8
+  rotation 0 0 1 2.09439
+  enablePhysics FALSE
+}
+Wrench {
+  translation -1.1611799782129029 -0.763133024949483 0.7988605321390951
+  rotation -8.173542759678696e-06 -9.060281952521498e-05 0.9999999958621612 -2.61799639041102
+}
+Hammer {
+  translation -1.6039216147464628 -0.8493592936148165 0.8126559380084681
+  rotation -0.002936054304262121 -0.007674802946169827 0.9999662379224912 1.573081184139372
+}
+PlatformCart {
+  hidden rotation_4 1 -2.526942008261427e-10 2.5269512902547545e-10 1.5708
+  hidden rotation_5 1 2.760923810602332e-10 -2.760933952060389e-10 1.5708
+  translation 0.9276448457113867 1.7933057137526083 -0.000751891635924401
+  rotation 0.00016466800660409388 2.194169511742947e-05 0.9999999862015045 -2.8797932964182915
+}
+Radiator {
+  translation 0.528902 2.341308 0.33
+  rotation 0 0 1 -1.5707963071795863
+  numberOfFins 16
+}
+WoodenPalletStack {
+  translation 2.8 -0.17 0
+  rotation 0 0 1 -1.5707953071795862
+  palletNumber 5
+  palletSize 0.8 1 0.11
+}
+Cabinet {
+  translation -0.41 2.47 0
+  rotation 0 0 1 -1.5707953071795862
+  name "cabinet(1)"
+  layout [
+    "RightSidedDoor (1, 1, 1, 5, 1.5)"
+    "LeftSidedDoor (2, 1, 2, 5, 1.5)"
+  ]
+  primaryAppearance GlossyPaint {
+    baseColor 0.729 0.741 0.713
+  }
+  secondaryAppearance GlossyPaint {
+    baseColor 0.729 0.741 0.713
+  }
+}
+PortraitPainting {
+  translation 5.68 -2.25 1.355
+  rotation 0 0 1 1.5708
+}
+CardboardBox {
+  translation -1.21 2.18 0.3
+}
+CardboardBox {
+  translation -1.198389 2.100678 0.75
+  rotation 0 0 1 2.094395
+  name "cardboard box(1)"
+  size 0.4 0.6 0.3
+}
+Wall {
+  translation -2.835 2.58 0
+  rotation 0 1 0 0
+  size 9 0.2 2.4
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+    textureTransform TextureTransform {
+      scale 2 1
+    }
+  }
+}
+Wall {
+  translation 4.375 2.58 0
+  name "wall(2)"
+  size 5 0.2 2.4
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+    textureTransform TextureTransform {
+      scale 2 1
+    }
+  }
+}
+Wall {
+  translation 1.77 2.58 1.2
+  name "wall(3)"
+  size 0.21 0.2 1.2
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+    textureTransform TextureTransform {
+      scale 0.1 0.7
+    }
+  }
+}
+Wall {
+  translation 0 -2.42 0
+  name "wall(1)"
+  size 15 0.2 2.4
+  appearance Roughcast {
+    colorOverride 0.7 0.7 0.7
+    textureTransform TextureTransform {
+      scale 2 1
+    }
+  }
+}
+PottedTree {
+  translation 4.8 -2.01 0
+}
+PottedTree {
+  translation 6.58 -2.01 0
+  name "potted tree(1)"
+}
+Transform {
+  translation 1.77 2.67 1.05
+  rotation 1 0 0 1.5707996938995747
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.23 0.3 0.01
+      }
+    }
+  ]
+}
+SolidBox {
+  translation 3.46 -0.91 0.375
+  rotation 0 0 1 3.1415919999999997
+  name "box(2)"
+  size 0.2 0.18 0.75
+  appearance CorrugatedMetal {
+    textureTransform TextureTransform {
+      scale 0.7 0.7
+    }
+  }
+}
+SolidBox {
+  translation 1.77 -2.28 0.375
+  rotation 0 0 1 3.1415919999999997
+  name "box(4)"
+  size 0.2 0.18 0.75
+  appearance CorrugatedMetal {
+    textureTransform TextureTransform {
+      scale 0.7 0.7
+    }
+  }
+}
+SolidBox {
+  translation 1.77 2.43 0.375
+  rotation 0 0 1 3.1415919999999997
+  name "box(3)"
+  size 0.2 0.18 0.75
+  appearance CorrugatedMetal {
+    textureTransform TextureTransform {
+      scale 0.7 0.7
+    }
+  }
+}
+FireExtinguisher {
+  translation -0.7576473128242146 1.7899909843503141 -0.0011771999999998228
+  rotation 0.0005935861464986101 -0.0007934182168259619 -0.9999995090713893 1.5707998866176542
+}
+ConveyorBelt {
+  translation 0 0.69 0
+  rotation 0 1 0 0
+  name "conveyor belt(1)"
+  size 13 0.5 0.25
+  appearance CorrugatedMetal {
+    textureTransform TextureTransform {
+      scale 6 3.1
+    }
+  }
+  borderHeight 0
+  speed 0.062
+  acceleration 0.012
+  timer 90
+}
+PlasticCrate {
+  translation 6.200479909323773 0.6802062664280811 0.24802498400069642
+  rotation -0.015401289499550067 0.4905789414714189 0.871260639801049 0.0007702697709455874
+  size 0.6 0.45 0.4
+  mass 1
+}
+PlasticCrate {
+  translation 5.600691550240377 0.6799429527061515 0.24821216856540684
+  rotation -0.044566695024875584 0.17163826456637346 0.9841514699634418 0.0011564732092152015
+  name "plastic crate(1)"
+  size 0.6 0.45 0.4
+  mass 1
+}
+PlasticCrate {
+  translation 4.99979911572883 0.6847742267286379 0.24837465751714694
+  rotation 0.0005928920750214321 0.034815984238263424 0.9993935639779298 0.0063758264186478805
+  name "plastic crate(2)"
+  size 0.6 0.45 0.4
+  mass 1
+}
+PlasticCrate {
+  translation 4.399883832646925 0.6843259393277558 0.24853789674223162
+  rotation -0.004997389219391693 0.036666351359063494 0.9993150678234585 0.006623468425723203
+  name "plastic crate(3)"
+  size 0.6 0.45 0.4
+  mass 1
+}
+PlasticCrate {
+  translation 3.799936186639223 0.6819751202517041 0.24870043495559424
+  rotation -0.004835653801556129 0.034844490782676374 0.9993810474060468 0.0066112436314129
+  name "plastic crate(4)"
+  size 0.6 0.45 0.4
+  mass 1
+}
+Can {
+  translation 1.7394604559260607 -2.287957190284063 0.8110925661693212
+  rotation 0.0003357205968210475 0.00014484521849630335 -0.9999999331557695 0.8138485807718644
+  name "can(14)"
+}
+Can {
+  translation 2.070103543886329 -2.2880396578093825 0.031681330000000014
+  rotation -0.6491571389001517 -0.3964445623730015 0.6491738734575263 2.386764832797449
+  name "can(15)"
+}
+Can {
+  translation -2.01125444060942 -0.7694319615012694 0.8610927424344773
+  rotation 2.057137208521785e-05 -0.00021869569744331497 -0.9999999758745051 1.421543645663581
+  name "can(16)"
+}
+Can {
+  translation 4.126003434939424 -0.9843477586797407 0.8610926834977182
+  rotation -0.00014902447850056238 0.00014463138592463978 0.9999999784367333 1.594859893365676
+  name "can(17)"
+}
+Can {
+  translation 0.8497970878875514 -0.8233939469224566 0.7716813300000002
+  rotation -0.2606200741567378 0.9295992645909495 0.260619232249852 1.643733003148275
+  name "can(18)"
+}
+Can {
+  translation 1.8029615007618145 -2.287840722203951 0.811092450701989
+  rotation -0.02105757721761134 0.0003503608924381402 -0.9997782032475849 0.013732976826140152
+  name "can(19)"
+}
+Can {
+  translation 4.872670153894077 -0.8010408468652737 0.8316813300000002
+  rotation -0.3724440904825683 -0.861280941364932 -0.3456595716975719 1.706909468677318
+  name "can(3)"
+}
+Can {
+  translation 5.410000049707192 -0.5950553533363595 0.8610929027504134
+  rotation -0.9999818329072739 -0.00602751914276745 5.355737102839605e-05 0.00029840754498531923
+  name "can(7)"
+}
+Can {
+  translation 3.0901095569026222 2.129901800292214 0.8610922287173287
+  rotation -0.3999019539527103 -0.3867743450664108 0.8309536889762588 0.000496078713502244
+  name "can(8)"
+}
+FruitBowl {
+  translation 3.0520611280814084e-11 -0.9600000000305208 0.7399509500000002
+  rotation -0.01584512787956023 0.0044283795186213564 0.9998646515290555 1.132032898957708e-15
+}
+FruitBowl {
+  translation 3.8799496993450275 -0.9601679251166807 0.7998920900000002
+  rotation -0.029311935024144323 0.08915811122641996 0.99558607948669 0.0004967826187539909
+  name "fruit bowl(1)"
+}
+RobocupSoccerBall {
+  translation 5.368893459477086 -0.97 0.8699689631957087
+  rotation 0 -1 0 1.5707963267900693
+}
+Telephone {
+  translation 5.14055 -0.98721 0.81
+  rotation 0 0 1 2.0944
+}
+RubberDuck {
+  translation 0.7199999452744418 -0.710000051138148 0.7604845045512166
+  rotation 2.414171623386568e-17 4.873342350334814e-18 1 -2.6179950933543825
+}
+RubberDuck {
+  translation 4.185946896131088 -0.737690397102719 0.8204845045512167
+  rotation 6.06629673578287e-17 -2.804997424092542e-18 1 1.429012125953631
+  name "rubber duck(1)"
+}
+LegoWheel {
+  translation 4.658521391536877 -0.5810327609167903 0.8219947026000003
+  rotation 0.028395346069550062 0.9986278289087147 -0.044001859627265424 0.0286727745564193
+}
+DEF robot Robot {
+  translation 5.050168045783859 0.22236992039767656 0.93
+  rotation 0 0 1 -1.8064157758141306
+  children [
+    RangeFinder {
+      width 240
+      height 160
+      near 0.1
+      minRange 0.1
+      maxRange 5
+    }
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.756863 0.490196 0.0666667
+        metalness 0.2
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+    Camera {
+      width 480
+      height 320
+      antiAliasing TRUE
+      ambientOcclusionRadius 3
+    }
+  ]
+  controller "picture_taker"
+  controllerArgs [
+    "--auto-publish"
+  ]
+  supervisor TRUE
+}

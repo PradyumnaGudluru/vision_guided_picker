@@ -1,0 +1,181 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.1755852060128511 -0.552632263749387 0.8147192255572789 5.521778215581459
+  position -2.5211559637472356 2.3596075734921866 2.2311937012634866
+}
+TexturedBackground {
+  texture "noon_park_empty"
+}
+TexturedBackgroundLight {
+}
+DEF UR5E_TRANS RectangleArena {
+  floorSize 11 11
+  floorTileSize 2 2
+  floorAppearance Parquetry {
+  }
+  wallHeight 1
+}
+OrangeHedge {
+  name "hedge_1"
+  startPoint -5 1
+  endPoint 5 1
+}
+OrangeHedge {
+  name "hedge_2"
+  startPoint -5 -1
+  endPoint 5 -1
+  numberOfOranges 79
+}
+OrangeHedge {
+  name "hedge_3"
+  startPoint -5 3
+  endPoint 5 3
+  numberOfOranges 78
+}
+OrangeHedge {
+  name "hedge_4"
+  startPoint -5 -3
+  endPoint 5 -3
+  numberOfOranges 82
+}
+Robot {
+  translation 0 0 0.013
+  children [
+    SliderJoint {
+      jointParameters JointParameters {
+        axis 1 0 0
+      }
+      device [
+        PositionSensor {
+          name "x position sensor"
+        }
+        LinearMotor {
+          name "x motor"
+          maxVelocity 0.25
+          maxForce 10000
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 0.05
+        rotation 0 1 0 0
+        children [
+          SliderJoint {
+            jointParameters JointParameters {
+              axis 0 1 0
+            }
+            device [
+              PositionSensor {
+                name "y position sensor"
+              }
+              LinearMotor {
+                name "y motor"
+                maxVelocity 0.25
+              }
+            ]
+            endPoint Solid {
+              children [
+                PlasticFruitBox {
+                  translation 0 0 0.04
+                  rotation 3.913409017922911e-11 -1.3482374540431217e-11 0.9999999999999999 0
+                  mass -1
+                }
+                DEF CARRIER_SHAPE Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.305882 0.603922 0.0235294
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 1.25 0.65 0.025
+                  }
+                }
+                UR5e {
+                  hidden rotation_8 0.7068252250604122 0.7073882252407785 2.9998378494891645e-06 3.141597999673529
+                  hidden rotation_14 0 0 -1 0.5199999992655927
+                  hidden rotation_17 0 0 -1 0.5200000000230605
+                  translation -0.5 0 0.75
+                  controller "<extern>"
+                  controllerArgs [
+                    "--robot-description"
+                    "--use-ros-control"
+                    "--auto-publish"
+                  ]
+                  toolSlot [
+                    Robotiq3fGripper {
+                    }
+                  ]
+                  staticBase FALSE
+                }
+                Transform {
+                  translation 0.5 0 0
+                  children [
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        axis 0 0 1
+                      }
+                      device [
+                        PositionSensor {
+                          name "rotation_sensor"
+                        }
+                        RotationalMotor {
+                        }
+                      ]
+                      endPoint Solid {
+                        children [
+                          RangeFinder {
+                            translation 0 0 1
+                            rotation -0.23531198515969715 0.24223298472321395 0.9412499406386625 1.62399
+                            children [
+                              Camera {
+                                rotation -0.23531243148821224 0.2422333853555125 0.941249725952849 0
+                                width 480
+                                height 360
+                              }
+                            ]
+                            width 240
+                            height 180
+                            maxRange 10
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+              boundingObject DEF CARRIER_SHAPE Shape {
+                appearance PBRAppearance {
+                  baseColor 0.305882 0.603922 0.0235294
+                  metalness 0
+                }
+                geometry Box {
+                  size 1.25 0.65 0.025
+                }
+              }
+            }
+          }
+        ]
+        name "carrier"
+      }
+    }
+    DEF STAGE_SHAPE Transform {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.560784 0.34902 0.00784314
+            metalness 0
+          }
+          geometry Box {
+            size 10 1.25 0.025
+          }
+        }
+      ]
+    }
+  ]
+  name "xy_stage"
+  boundingObject USE STAGE_SHAPE
+  controller "ros"
+  controllerArgs [
+    "--auto-publish"
+  ]
+}

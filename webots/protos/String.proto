@@ -1,0 +1,61 @@
+#VRML_SIM R2022a utf8
+# tags: nonDeterministic
+# template language: javascript
+
+PROTO String [
+  field SFVec3f    translation 0 0 1.5
+  field SFRotation rotation    0 0 1 0
+  field SFFloat    length      1
+  field SFString   name "solid"
+]
+{
+%<
+  const length = fields.length.value;
+>%
+  Solid {
+    translation IS translation
+    rotation IS rotation
+    children [
+      BallJoint {
+        jointParameters BallJointParameters {
+          anchor 0 0 0
+          springConstant 0.5
+          dampingConstant 0.5
+        }
+        endPoint Solid {
+          children [
+            DEF STRING_TRANS Transform {
+              translation 0 0 %<= -length / 2 >%
+              children [
+                Shape {
+                  appearance Appearance {
+                    material Material { diffuseColor 0 1 0 }
+                  }
+                  geometry Cylinder { height %<= length - 0.025 >% radius 0.01 }
+                }
+              ]
+            }
+            Connector {
+              translation 0 0 %<= -length >%
+              rotation 0 1 0 -1.5701
+              type "symmetric"
+              autoLock TRUE
+              isLocked TRUE
+              distanceTolerance 0.02
+              axisTolerance 0.1
+              rotationTolerance 0.1
+              tensileStrength 0.05
+              shearStrength 0.05
+            }
+          ]
+          boundingObject USE STRING_TRANS
+          physics Physics {
+            density 8000
+            mass -1
+          }
+        }
+      }
+    ]
+    name IS name
+  }
+}

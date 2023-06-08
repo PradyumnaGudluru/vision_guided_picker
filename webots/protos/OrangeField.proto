@@ -1,0 +1,58 @@
+#VRML_SIM R2022a utf8
+# tags: nonDeterministic
+# template language: javascript
+
+PROTO OrangeField [
+  field SFVec2f   startPoint          -5 0
+  field SFVec2f   endPoint            5 0
+  field SFInt32   numberOfOranges     80
+]
+{
+%<
+    // use additional modules for extra functionality
+    import * as wbgeometry from 'wbgeometry.js';
+    import * as wbrandom from 'wbrandom.js';
+    import * as wbvector2 from 'wbvector2.js';
+
+    let numberOfOranges = fields.numberOfOranges.value;
+
+    const startPoint = fields.startPoint.value;
+    const endPoint = fields.endPoint.value;
+
+    let positions = [];
+    let lengths = [];
+    
+    const distanceStep = wbvector2.norm(wbvector2.minus(endPoint, startPoint)) / (numberOfOranges - 1);
+    for (let i=0; i < numberOfOranges; i++) {
+      positions.push({x: startPoint.x + distanceStep * i, y: startPoint.y});
+      lengths.push(1.0 + wbrandom.real(-0.2, 0.2));
+    }
+>%
+  Group {
+    children [
+      %< for (let i = 0; i < numberOfOranges; ++i) { >%
+        Transform {
+          # only y's are random
+          translation %<= positions[i].x >% %<= 2 + wbrandom.real(-0.4, 0.4) >% 0
+          rotation 0 0 1 0
+
+          children [
+            # `String` is my custom orange hanging stem.
+            # its length is randomly adjusted
+            String { name "%<= i >%" length %<= lengths[i] >% }
+
+            # Orange at the tip of `String` by chance.
+            %< if (wbrandom.real(0, 1) < 0.2) { >%
+            Transform {
+                translation 0 0 %<= -0.1 + 1.5 - lengths[i] >%
+                children [
+                  Orange { name "%<= 'orange' + i >%" }
+                ]
+            }
+            %< } >%
+          ]
+        }
+      %< } >%
+    ]
+  }
+}

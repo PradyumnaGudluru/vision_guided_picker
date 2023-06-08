@@ -1,0 +1,38 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.15393164078526092 -0.8842834782539748 -0.4408489311002236 5.552298179609305
+  position -6.107421048506062 -1.8050554981164713 4.449113670856531
+}
+TexturedBackground {
+  texture "noon_park_empty"
+}
+TexturedBackgroundLight {
+}
+OrangeHedge {
+  numberOfOranges 120
+}
+UR5e {
+  translation 0 0.5 0.355
+  controller "ur5e_picking_test"
+  toolSlot [
+    Robotiq3fGripper {
+    }
+  ]
+}
+Orange {
+  translation 0.82 0.9 0.416
+}
+PlasticFruitBox {
+  translation 0.42 -0.35 0
+}
+RectangleArena {
+  floorSize 13 13
+  floorTileSize 1 1
+  wallHeight 1.2
+}
+OrangeTree {
+  translation 0.82 0.9 0
+  length 0.37
+}

@@ -1,0 +1,501 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+  info [
+    "Example of Stewart platform demonstrating the combination of misc Joints and Motors nodes"
+  ]
+  title "Stewart Platform"
+  basicTimeStep 4
+  lineScale 1
+}
+Viewpoint {
+  orientation 0.1465021416254678 0.18657734047061472 -0.9714556184005853 1.2859366173793207
+  position -1.0375828845570712 2.8210993513921236 1.1190315641694164
+  near 0.5
+}
+TexturedBackground {
+  texture "factory"
+}
+TexturedBackgroundLight {
+}
+CircleArena {
+  radius 7
+  floorTileSize 1 1
+  wallThickness 0.5
+  wallHeight 1
+}
+DEF STEWART_PLATFORM Robot {
+  translation -4.206871854502469e-08 -1.0159362793811359e-08 0.024019000000000006
+  children [
+    DEF BASE_SHAPE Shape {
+      appearance DEF MAT1 PBRAppearance {
+        baseColor 0.12549 0.290196 0.529412
+        roughness 1
+        metalness 0
+      }
+      geometry Cylinder {
+        height 0.05
+        radius 0.75
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.292
+        axis 0 0 1
+      }
+      device [
+        PositionSensor {
+          name "sensor0"
+        }
+        RotationalMotor {
+          name "motor0"
+          maxTorque 1000
+        }
+      ]
+      endPoint Solid {
+        translation 0.7182525412174303 -0.21590110475544136 0.09999999999999215
+        rotation 0 0 -1 0.29200000000000065
+        children [
+          DEF OUTER_CARRIER_TRANS Transform {
+            translation 0.025 0 -0.05
+            rotation 0 0 -1 0
+            scale 1.5 1 1
+            children [
+              Shape {
+                appearance USE MAT1
+                geometry Box {
+                  size 0.1 0.1 0.025
+                }
+              }
+            ]
+          }
+          Hinge2Joint {
+            jointParameters HingeJointParameters {
+              position -0.6814
+            }
+            jointParameters2 JointParameters {
+              position -0.688
+              axis 0 1 0
+            }
+            endPoint Solid {
+              translation -0.31749670907320343 0.24329706577642574 0.30000396249433736
+              rotation -0.6820848199496637 -0.6892402176268488 0.24435265662547814 0.9586705429805122
+              children [
+                DEF OUTER_POST_SHAPE Shape {
+                  appearance USE MAT1
+                  geometry Cylinder {
+                    height 0.9
+                    radius 0.025
+                  }
+                }
+                BallJoint {
+                  jointParameters BallJointParameters {
+                    anchor 0 0 0.5
+                  }
+                  jointParameters2 JointParameters {
+                    axis 0 1 0
+                  }
+                  jointParameters3 JointParameters {
+                  }
+                  endPoint DEF TOP_PLATE Solid {
+                    translation -0.2662279999999226 -0.41274999999988937 0.36241500000004534
+                    rotation 0.8048088975892412 0.5922629482260142 0.038823169883714315 0.9280497612417656
+                    children [
+                      DEF TOP_PLATFORM_SHAPE Shape {
+                        appearance USE MAT1
+                        geometry Cylinder {
+                          height 0.05
+                          radius 0.5
+                        }
+                      }
+                    ]
+                    name "top_plate"
+                    boundingObject USE TOP_PLATFORM_SHAPE
+                    physics Physics {
+                    }
+                  }
+                }
+              ]
+              name "outer_post"
+              boundingObject USE OUTER_POST_SHAPE
+              physics Physics {
+              }
+            }
+          }
+        ]
+        boundingObject USE OUTER_CARRIER_TRANS
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2.668
+        axis 0 0 1
+      }
+      device [
+        PositionSensor {
+          name "sensor1"
+        }
+        RotationalMotor {
+          name "motor1"
+          maxTorque 1000
+        }
+      ]
+      endPoint DEF INNER_PART Solid {
+        translation -0.5339609999999992 0.2736519999999998 0.1
+        rotation 0 0 0.9999999999999999 2.668
+        children [
+          DEF INNER_CARRIER_TRANS Transform {
+            translation -0.1 0 -0.05
+            scale 1.5 1 1
+            children [
+              Shape {
+                appearance USE MAT1
+                geometry Box {
+                  size 0.1 0.1 0.025
+                }
+              }
+            ]
+          }
+          Hinge2Joint {
+            jointParameters HingeJointParameters {
+              position 0.694
+            }
+            jointParameters2 JointParameters {
+              position -0.675
+              axis 0 1 0
+            }
+            endPoint Solid {
+              translation -0.31244865836385005 -0.24967674465270892 0.3000622586501947
+              rotation 0.6959198476505403 -0.6753175177920954 -0.24421673941229344 0.9584823321955528
+              children [
+                Shape {
+                  appearance USE MAT1
+                  geometry Cylinder {
+                    height 0.9
+                    radius 0.025
+                  }
+                }
+                BallJoint {
+                  jointParameters BallJointParameters {
+                    anchor 0 0 0.5
+                  }
+                  jointParameters2 JointParameters {
+                    axis 0 1 0
+                  }
+                  jointParameters3 JointParameters {
+                  }
+                  endPoint SolidReference {
+                    solidName "top_plate"
+                  }
+                }
+              ]
+              name "inner_post"
+              boundingObject USE OUTER_POST_SHAPE
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "inner_carrier1"
+        boundingObject USE INNER_CARRIER_TRANS
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 1.80287
+        axis 0 0 1
+      }
+      device [
+        PositionSensor {
+          name "sensor2"
+        }
+        RotationalMotor {
+          name "motor2"
+          maxTorque 1000
+        }
+      ]
+      endPoint Solid {
+        translation -0.1724970733777054 0.7298936632661819 0.09999999999999733
+        rotation 0 0 1 1.80287
+        children [
+          DEF OUTER_CARRIER_TRANS Transform {
+            translation 0.05 0 -0.05
+            scale 1.5 1 1
+            children [
+              DEF OUTER_CARRIER_SHAPE Shape {
+                appearance USE MAT1
+                geometry Box {
+                  size 0.1 0.1 0.025
+                }
+              }
+            ]
+          }
+          Hinge2Joint {
+            jointParameters HingeJointParameters {
+              position -0.681408
+            }
+            jointParameters2 JointParameters {
+              position -0.688009
+              axis 0 1 0
+            }
+            device [
+              RotationalMotor {
+                maxTorque 1000
+              }
+              Brake {
+              }
+            ]
+            endPoint Solid {
+              translation -0.3175001853892668 0.24329766590638408 0.29999979673704863
+              rotation -0.6820837655766938 -0.6892401671320006 0.24435574220502723 0.9586822028165863
+              children [
+                Shape {
+                  appearance USE MAT1
+                  geometry Cylinder {
+                    height 0.9
+                    radius 0.025
+                  }
+                }
+                BallJoint {
+                  jointParameters BallJointParameters {
+                    anchor 0 0 0.5
+                  }
+                  jointParameters2 JointParameters {
+                    axis 0 1 0
+                  }
+                  jointParameters3 JointParameters {
+                  }
+                  endPoint SolidReference {
+                    solidName "top_plate"
+                  }
+                }
+              ]
+              boundingObject USE OUTER_POST_SHAPE
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "outer_carrier_2"
+        boundingObject USE OUTER_CARRIER_TRANS
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 4.76241
+        axis 0 0 1
+      }
+      device [
+        PositionSensor {
+          name "sensor3"
+        }
+        RotationalMotor {
+          name "motor3"
+          maxTorque 1000
+        }
+      ]
+      endPoint Solid {
+        translation 0.030000097563539843 -0.5992495257788466 0.09999999999999733
+        rotation 0 0 1 4.76241
+        children [
+          DEF INNER_CARRIER_TRANS Transform {
+            translation -0.05 0 -0.05
+            scale 1.5 1 1
+            children [
+              Shape {
+                appearance USE MAT1
+                geometry Box {
+                  size 0.1 0.1 0.025
+                }
+              }
+            ]
+          }
+          Hinge2Joint {
+            jointParameters HingeJointParameters {
+              position 0.694123
+            }
+            jointParameters2 JointParameters {
+              position -0.675132
+              axis 0 1 0
+            }
+            endPoint Solid {
+              translation -0.31250018230042254 -0.24968726447778716 0.2999998433662992
+              rotation 0.6959050717795591 -0.6753159622467152 -0.24426314131747356 0.958657071237821
+              children [
+                USE OUTER_POST_SHAPE
+                BallJoint {
+                  jointParameters BallJointParameters {
+                    anchor 0 0 0.5
+                  }
+                  jointParameters2 JointParameters {
+                    axis 0 1 0
+                  }
+                  jointParameters3 JointParameters {
+                  }
+                  endPoint SolidReference {
+                    solidName "top_plate"
+                  }
+                }
+              ]
+              boundingObject USE OUTER_POST_SHAPE
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "inner_carrier_2"
+        boundingObject USE INNER_CARRIER_TRANS
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 3.89727
+        axis 0 0 1
+      }
+      device [
+        PositionSensor {
+          name "sensor4"
+        }
+        RotationalMotor {
+          name "motor4"
+          maxTorque 1000
+        }
+      ]
+      endPoint Solid {
+        translation -0.5458553987502718 -0.5143363526479359 0.1
+        rotation 0 0 1 3.89727
+        children [
+          DEF OUTER_CARRIER_TRANS Transform {
+            translation 0 0 -0.05
+            scale 1.5 1 1
+            children [
+              Shape {
+                appearance USE MAT1
+                geometry Box {
+                  size 0.1 0.1 0.025
+                }
+              }
+            ]
+          }
+          Hinge2Joint {
+            jointParameters HingeJointParameters {
+              position -0.681408
+            }
+            jointParameters2 JointParameters {
+              position -0.688009
+              axis 0 1 0
+            }
+            endPoint Solid {
+              translation -0.3175001853892688 0.24329766590638463 0.29999979673705035
+              rotation -0.6820837655766938 -0.6892401671320006 0.24435574220502723 0.9586822028165863
+              children [
+                USE OUTER_POST_SHAPE
+                BallJoint {
+                  jointParameters BallJointParameters {
+                    anchor 0 0 0.5
+                  }
+                  jointParameters2 JointParameters {
+                    axis 0 1 0
+                  }
+                  jointParameters3 JointParameters {
+                  }
+                  endPoint SolidReference {
+                    solidName "top_plate"
+                  }
+                }
+              ]
+              boundingObject USE OUTER_POST_SHAPE
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "outer_carrier_3"
+        boundingObject USE OUTER_CARRIER_TRANS
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 6.8568
+        axis 0 0 1
+      }
+      device [
+        PositionSensor {
+          name "sensor5"
+        }
+        RotationalMotor {
+          name "motor5"
+          maxTorque 1000
+        }
+      ]
+      endPoint Solid {
+        translation 0.5039669251098053 0.3256030380623085 0.10000000000000787
+        rotation 0 0 -1 5.709570614359174
+        children [
+          DEF INNER_CARRIER_TRANS Transform {
+            translation -0.05 0 -0.05
+            scale 1.5 1 1
+            children [
+              Shape {
+                appearance USE MAT1
+                geometry Box {
+                  size 0.1 0.1 0.025
+                }
+              }
+            ]
+          }
+          Hinge2Joint {
+            jointParameters HingeJointParameters {
+              position 0.694123
+            }
+            jointParameters2 JointParameters {
+              position -0.675132
+              axis 0 1 0
+            }
+            endPoint Solid {
+              translation -0.31250018230042254 -0.24968726447778716 0.2999998433662992
+              rotation 0.6959050717795591 -0.6753159622467152 -0.24426314131747356 0.958657071237821
+              children [
+                USE OUTER_POST_SHAPE
+                BallJoint {
+                  jointParameters BallJointParameters {
+                    anchor 0 0 0.5
+                  }
+                  jointParameters2 JointParameters {
+                    axis 0 1 0
+                  }
+                  jointParameters3 JointParameters {
+                  }
+                  endPoint SolidReference {
+                    solidName "top_plate"
+                  }
+                }
+              ]
+              boundingObject USE OUTER_POST_SHAPE
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "inner_carrier3"
+        boundingObject USE INNER_CARRIER_TRANS
+        physics Physics {
+        }
+      }
+    }
+  ]
+  boundingObject USE BASE_SHAPE
+  controller "mp_circular"
+  controllerArgs [
+    ""
+  ]
+}

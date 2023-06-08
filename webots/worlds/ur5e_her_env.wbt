@@ -1,0 +1,23 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.2621951425697516 0.11988377027220816 0.957539340621652 2.3040665169706447
+  position 2.3092648452006204 -1.527358165578453 2.701884995784483
+}
+TexturedBackground {
+  texture "noon_park_empty"
+}
+TexturedBackgroundLight {
+}
+UR5e {
+  translation 0 0.5 0.955
+  controller "ur5e_rl_her_reach"
+  supervisor TRUE
+  toolSlot [
+    Robotiq3fGripper {
+    }
+  ]
+}
+Floor {
+}

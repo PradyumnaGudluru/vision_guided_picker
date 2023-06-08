@@ -1,0 +1,59 @@
+#VRML_SIM R2022a utf8
+# tags: nonDeterministic
+# template language: javascript
+
+PROTO OrangeHedge [
+  field SFString  name                "hedge"
+  field SFVec2f   startPoint          -5 0
+  field SFVec2f   endPoint            5 0
+  field SFInt32   numberOfOranges     80
+]
+{
+%<
+    // use additional modules for extra functionality
+    import * as wbgeometry from 'wbgeometry.js';
+    import * as wbrandom from 'wbrandom.js';
+    import * as wbvector2 from 'wbvector2.js';
+
+    let numberOfOranges = fields.numberOfOranges.value;
+
+    const hedgeName = fields.name.value;
+    const startPoint = fields.startPoint.value;
+    const endPoint = fields.endPoint.value;
+
+    let positions = [];
+    let lengths = [];
+
+    wbrandom.seed(Date.now())
+    const distanceStep = wbvector2.multiply(wbvector2.minus(endPoint, startPoint), 1 / (numberOfOranges - 1));
+
+    for (let i=0; i < numberOfOranges; i++) {
+      const orangePoint = wbvector2.add(startPoint, wbvector2.multiply(distanceStep, i));
+      positions.push({x: orangePoint.x, y: orangePoint.y});
+      lengths.push(0.5 + wbrandom.real(-0.1, 0.1));
+    }
+>%
+  Group {
+    children [
+      %< for (let i = 0; i < numberOfOranges; ++i) { >%
+        Transform {
+          translation %<= positions[i].x >% %<= positions[i].y + wbrandom.real(-0.25, 0.25) >% 0
+          rotation 0 0 1 0
+
+          children [
+            OrangeTree { name "%<= hedgeName + i >%" length %<= lengths[i] >% }
+
+            %< if (wbrandom.real(0, 1) < 0.1) { >%
+              Transform {
+                translation 0 0 %<= lengths[i] >%
+                children [
+                  Orange { name "%<= hedgeName + 'orange' + i >%" }
+                ]
+            }
+            %< } >%
+          ]
+        }
+      %< } >%
+    ]
+  }
+}

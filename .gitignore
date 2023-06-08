@@ -1,0 +1,9 @@
+.idea
+*.wbproj
+.ipynb_checkpoints
+.*.cache
+
+PennFudanPed
+__pycache__
+
+model_parameters

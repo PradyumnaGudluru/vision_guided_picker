@@ -1,0 +1,145 @@
+PROTO Rope [
+  field SFVec3f    translation 0 0 0.0
+  field SFRotation rotation    0 0 1 0
+]
+{
+  Solid {
+  translation IS translation
+  rotation IS rotation
+  children [
+    DEF INITIAL_BALL_JOINT BallJoint {
+      jointParameters BallJointParameters {
+        position 0.0039004922760309687
+        anchor 0 0 0
+      }
+      endPoint DEF ROPE_INITIAL_ELEMENT Solid {
+        children [
+          DEF BALL_JOINT_1 BallJoint {
+            jointParameters BallJointParameters {
+              position 1.8146906011422277e-05
+              springConstant 0.5
+            }
+            endPoint DEF ROPE_ELEMENT_1 Solid {
+              translation 0 0 -0.1
+              children [
+                DEF ROPE_ELEMENT Transform {
+                  translation 0 0 0.05
+                  children [
+                    Shape {
+                      appearance PBRAppearance {
+                        baseColor 0.8 0.8 0.8
+                        roughness 1
+                        metalness 0
+                      }
+                      geometry Capsule {
+                        height 0.1
+                        radius 0.005
+                      }
+                    }
+                  ]
+                }
+                DEF BALL_JOINT_2 BallJoint {
+                  jointParameters BallJointParameters {
+                    springConstant 0.5
+                  }
+                  endPoint DEF ROPE_ELEMENT_2 Solid {
+                    translation 0 0 -0.1
+                    children [
+                      USE ROPE_ELEMENT
+                      DEF BALL_JOINT_3 BallJoint {
+                        jointParameters BallJointParameters {
+                          springConstant 0.5
+                        }
+                        endPoint DEF ROPE_ELEMENT_3 Solid {
+                          translation 0 0 -0.1
+                          children [
+                            USE ROPE_ELEMENT
+                            DEF BALL_JOINT_4 BallJoint {
+                              jointParameters BallJointParameters {
+                                springConstant 0.5
+                              }
+                              endPoint DEF ROPE_ELEMENT_4 Solid {
+                                translation 0 0 -0.1
+                                children [
+                                  USE ROPE_ELEMENT
+                                  DEF BALL_JOINT_5 BallJoint {
+                                    jointParameters BallJointParameters {
+                                      position -0.005238904457676072
+                                      springConstant 0.5
+                                    }
+                                    endPoint DEF ROPE_ELEMENT_5 Solid {
+                                      translation 0 0 -0.1
+                                      children [
+                                        USE ROPE_ELEMENT
+                                        Connector {
+        rotation 0 1 0 -1.5701
+        type "symmetric"
+        autoLock TRUE
+        isLocked TRUE
+        distanceTolerance 0.01
+        axisTolerance 0.2
+        rotationTolerance 0.2
+        tensileStrength 0.05
+      }
+                                      ]
+                                      boundingObject USE ROPE_ELEMENT
+                                      physics DEF ROPE_ELEMENT_PHYSICS Physics {
+                                        density -1
+                                        mass 0.0085
+                                        centerOfMass [
+                                          0 0 0
+                                        ]
+                                        inertiaMatrix [
+                                          5.7e-05 5.7e-05 9.5e-06
+                                          0 0 0
+                                        ]
+                                        damping Damping {
+                                          linear 0.715292
+                                          angular 0.715292
+                                        }
+                                      }
+                                      linearVelocity -0.12493336224324303 -0.008711211460990497 0.0010185891790539822
+                                      angularVelocity -0.016019467750626078 0.23021272027060016 0.00045781934615501686
+                                    }
+                                  }
+                                ]
+                                boundingObject USE ROPE_ELEMENT
+                                physics USE ROPE_ELEMENT_PHYSICS
+                                linearVelocity -0.08968893890015768 -0.0062579680004092334 0.0007229266776103418
+                                angularVelocity -0.015769813740312093 0.2263784085973031 0.0004573874132285188
+                              }
+                            }
+                          ]
+                          boundingObject USE ROPE_ELEMENT
+                          physics USE ROPE_ELEMENT_PHYSICS
+                          linearVelocity -0.06705191713724039 -0.0046806664740773555 0.0005361558557176514
+                          angularVelocity -0.015681421593433647 0.22485921433279094 0.0004613769845170043
+                        }
+                      }
+                    ]
+                    boundingObject USE ROPE_ELEMENT
+                    physics USE ROPE_ELEMENT_PHYSICS
+                    linearVelocity -0.044566781003553546 -0.0031122053237307486 0.00035393439115015505
+                    angularVelocity -0.01559155630688284 0.2233801319503899 0.0004651982348264852
+                  }
+                }
+              ]
+              boundingObject USE ROPE_ELEMENT
+              physics USE ROPE_ELEMENT_PHYSICS
+              linearVelocity -0.02222952490968273 -0.0015527313887406158 0.00017565644467273592
+              angularVelocity -0.015524045298910476 0.22230140922892044 0.0004679450981318612
+            }
+          }
+        ]
+        boundingObject Sphere {
+          radius 0.005
+        }
+        physics USE ROPE_ELEMENT_PHYSICS
+        linearVelocity -1.2290332301668354e-07 -8.824949028034367e-09 2.9519184574919495e-09
+        angularVelocity -0.015543955931874865 0.22253738508027684 0.00046739044951491605
+      }
+    }
+  ]
+  name "Rope"
+  }
+}

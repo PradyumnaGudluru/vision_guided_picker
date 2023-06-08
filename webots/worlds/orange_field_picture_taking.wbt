@@ -1,0 +1,153 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.2053546039988523 -0.5477730397797902 0.8110327881823783 5.40196679184185
+  position -4.171672432874566 3.7509277416741735 3.041735819231882
+}
+TexturedBackground {
+  texture "noon_park_empty"
+}
+TexturedBackgroundLight {
+}
+DEF UR5E_TRANS RectangleArena {
+  floorSize 11 11
+  floorTileSize 2 2
+  floorAppearance Parquetry {
+  }
+  wallHeight 1
+}
+OrangeHedge {
+  name "hedge_1"
+  startPoint -5 1
+  endPoint 5 1
+}
+OrangeHedge {
+  name "hedge_2"
+  startPoint -5 -1
+  endPoint 5 -1
+  numberOfOranges 79
+}
+OrangeHedge {
+  name "hedge_3"
+  startPoint -5 3
+  endPoint 5 3
+  numberOfOranges 78
+}
+OrangeHedge {
+  name "hedge_4"
+  startPoint -5 -3
+  endPoint 5 -3
+  numberOfOranges 82
+}
+Robot {
+  translation 0 0 0.013
+  children [
+    SliderJoint {
+      jointParameters JointParameters {
+        axis 1 0 0
+      }
+      device [
+        LinearMotor {
+          name "x motor"
+          maxForce 10000
+        }
+      ]
+      endPoint Solid {
+        translation 8.85439174647118e-06 5.26388627128884e-19 0.03981923102473674
+        rotation 1.3151256154853068e-14 1 -6.519142376874107e-17 0.0003279404409217338
+        children [
+          SliderJoint {
+            jointParameters JointParameters {
+              axis 0 1 0
+            }
+            device [
+              LinearMotor {
+                name "y motor"
+              }
+            ]
+            endPoint Solid {
+              children [
+                PlasticFruitBox {
+                  translation 0 0 0.04
+                  rotation 3.913409017922911e-11 -1.3482374540431217e-11 0.9999999999999999 0
+                  mass -1
+                }
+                DEF CARRIER_SHAPE Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.305882 0.603922 0.0235294
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 1.25 0.65 0.025
+                  }
+                }
+                UR5e {
+                  translation 0 0 0.35
+                  toolSlot [
+                    Robotiq3fGripper {
+                    }
+                  ]
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                  }
+                  device [
+                    RotationalMotor {
+                    }
+                  ]
+                  endPoint Solid {
+                    children [
+                      RangeFinder {
+                        translation 0 0 1
+                        rotation -0.23531198515969715 0.24223298472321395 0.9412499406386625 1.62399
+                        children [
+                          Camera {
+                            rotation -0.23531243148821224 0.2422333853555125 0.941249725952849 0
+                            width 480
+                            height 360
+                          }
+                        ]
+                        width 240
+                        height 180
+                        minRange 0.05
+                        maxRange 5
+                      }
+                    ]
+                  }
+                }
+              ]
+              boundingObject DEF CARRIER_SHAPE Shape {
+                appearance PBRAppearance {
+                  baseColor 0.305882 0.603922 0.0235294
+                  metalness 0
+                }
+                geometry Box {
+                  size 1.25 0.65 0.025
+                }
+              }
+            }
+          }
+        ]
+        name "carrier"
+      }
+    }
+    DEF STAGE_SHAPE Transform {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.560784 0.34902 0.00784314
+            metalness 0
+          }
+          geometry Box {
+            size 10 1.25 0.025
+          }
+        }
+      ]
+    }
+  ]
+  name "xy_stage"
+  boundingObject USE STAGE_SHAPE
+  controller "orange_field_picture_taker"
+}
